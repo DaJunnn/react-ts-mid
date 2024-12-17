@@ -1,50 +1,27 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+前端（React + TypeScript）
+畫面呈現
 
-Currently, two official plugins are available:
+學生資料卡片視覺化（StudentHub）。
+包含帳號、座號、系所、年級、班級和缺席次數等資訊。
+主要功能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+新增學生：表單輸入學生基本資料，並透過 POST 請求送至後端。
+修改學生資料：提供表單，修改並儲存現有學生的資訊。
+刪除學生：選取特定學生，發送 DELETE 請求刪除資料。
+檔案整理
 
-## Expanding the ESLint configuration
+組件：CreateData.tsx、UpdateData.tsx。
+功能邏輯：使用 handleChange 處理輸入，並使用 API 發送請求
+後端（TypeScript + Node.js + MongoDB）
+核心功能
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+UserService 處理資料庫邏輯，如：
+deleteById：刪除指定 id 的學生紀錄。
+userNameValidator：驗證學生的帳號格式，必須符合 tku + 科系代碼 + 四位數字。
+錯誤處理和回應格式統一。
+路由設計
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+API 路徑：如 /api/students。
+常見的 HTTP 動作：GET（查詢）、POST（新增）、PUT（修改）、DELETE（刪除）。
