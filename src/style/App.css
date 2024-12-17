@@ -1,28 +1,86 @@
+/* 頁面容器 */
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  color: #212121;
+  display: flex;
+  gap: 1rem;
 }
 
-.container {
+/* 側邊欄樣式 */
+.sidebar {
+  width: 250px;
+  background-color: #868da2;
+  color: #ffffff;
+  padding: 20px;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.nav-button {
+  display: block;
+  color: #fff;
+  background-color: #263f77;
+  text-align: center;
+  padding: 10px 15px;
+  margin: 10px 0;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #454c82;
+}
+
+.nav-button.active {
+  background-color: #454c82;
+}
+
+/* 主內容樣式 */
+.main-content {
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  padding: 2rem;
+  background-color: #868da2;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 500px; /* 確保主內容有固定高度 */
 }
 
-.container .student {
+/* 學生卡片樣式 */
+.student {
   border: solid 1px #212121;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   width: 15rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1% 2%;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
 }
 
+.student:hover {
+  transform: translateY(-5px);
+}
 
-.container .student h1 {
+.student h1 {
   font-size: 1.25rem;
+}
+
+/* 無資料提示 */
+.no-data {
+  font-size: 1.25rem;
+  color: #666;
+  text-align: center;
+  width: 100%;
 }
